@@ -11,12 +11,16 @@ export function setEntries(state, entries) {
 // Next is called when voting is started. Takes the next two values from the list and adds them to the vote pair
 export function next(state) {
     const entries = state.get('entries').concat(getWinners(state.get('vote')));
-    return state.merge({
-        vote: Map({
-            pair: entries.take(2)
-        }),
-        entries: entries.skip(2)
-    });
+    if (entries.size === 1) {
+        return state.remove('vote').remove('entries').set('winner', entries.first());
+    } else {
+        return state.merge({
+            vote: Map({
+                pair: entries.take(2)
+            }),
+            entries: entries.skip(2)
+        });
+    }
 }
 
 // Takes an entry and adds a vote to it (sets tally to 0 first if it does not exist)
