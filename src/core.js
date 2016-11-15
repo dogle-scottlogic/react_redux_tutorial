@@ -31,6 +31,7 @@ export function vote(state, entry) {
     );
 }
 
+// Takes a vote and decides the winner, returning both if a tie or an empty arry if no vote exists
 function getWinners(vote) {
     if (!vote) return [];
     const [a, b] = vote.get('pair');
