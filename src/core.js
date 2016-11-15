@@ -3,6 +3,8 @@ import {
     Map
 } from 'immutable';
 
+export const INITIAL_STATE = Map();
+
 // Takes a state and a list of entries and updates the state with a list 'entries'
 export function setEntries(state, entries) {
     return state.set('entries', List(entries));
