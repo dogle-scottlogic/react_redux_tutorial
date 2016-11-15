@@ -26,8 +26,8 @@ export function next(state) {
 }
 
 // Takes an entry and adds a vote to it (sets tally to 0 first if it does not exist)
-export function vote(state, entry) {
-    return state.updateIn(['vote', 'tally', entry],
+export function vote(voteState, entry) {
+    return voteState.updateIn(['tally', entry],
         0,
         tally => tally + 1
     );
