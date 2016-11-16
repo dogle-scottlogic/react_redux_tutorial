@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Winner from './Winner';
 import Tally from './Tally';
+import * as actionCreators from '../action_creators';
 
 export const Results = React.createClass({
     render: function() {
@@ -22,4 +23,4 @@ function mapStateToProps(state) {
     }
 }
 
-export const ResultsContainer = connect(mapStateToProps)(Results);
+export const ResultsContainer = connect(mapStateToProps, actionCreators)(Results);
