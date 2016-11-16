@@ -27,10 +27,14 @@ export function next(state) {
 
 // Takes an entry and adds a vote to it (sets tally to 0 first if it does not exist)
 export function vote(voteState, entry) {
-    return voteState.updateIn(['tally', entry],
-        0,
-        tally => tally + 1
-    );
+    const pair = voteState.get('pair');
+    if (pair.contains(entry)) {
+        return voteState.updateIn(['tally', entry],
+            0,
+            tally => tally + 1
+        );
+    }
+    return voteState;
 }
 
 // Takes a vote and decides the winner, returning both if a tie or an empty arry if no vote exists
