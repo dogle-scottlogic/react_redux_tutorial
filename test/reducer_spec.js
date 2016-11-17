@@ -32,14 +32,16 @@ describe('reducer', () => {
 
         expect(nextState).to.equal(fromJS({
             vote: {
+                round: 1,
                 pair: ['Trainspotting', '28 Days Later']
             },
-            entries: []
+            entries: [],
         }));
     });
     it('handles VOTE', () => {
         const initialState = fromJS({
             vote: {
+                round: 1,
                 pair: ['Trainspotting', '28 Days Later']
             },
             entries: []
@@ -52,6 +54,7 @@ describe('reducer', () => {
 
         expect(nextState).to.equal(fromJS({
             vote: {
+                round: 1,
                 pair: ['Trainspotting', '28 Days Later'],
                 tally: {
                     Trainspotting: 1
@@ -73,7 +76,7 @@ describe('reducer', () => {
     it('can be used with reduce', () => {
         const actions = [{
             type: 'SET_ENTRIES',
-            entries: ['Trainspotting', '28 Days Later']
+            entries: ['Trainspotting', '28 Days Later'],
         }, {
             type: 'NEXT'
         }, {
